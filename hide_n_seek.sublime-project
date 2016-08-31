@@ -3,6 +3,12 @@
 	[
 		{
 			"path": "."
+		},
+		{
+			"path": "/Users/my/Work/ir-app"
+		},
+		{
+			"path": "/Users/my/Work/xcode/HpcClient"
 		}
 	]
 }

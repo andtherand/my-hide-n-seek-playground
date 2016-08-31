@@ -8,21 +8,20 @@ services:
   # the persistence layer
   couchbase:
     container_name: hns_couchbase
-    image: mychiara/docker-couchbase-server:0.0.4
+    image: mychiara/hns_couchbase:0.0.3
     restart: always
     ports:
-      - 8091:8091
-      - 8092:8092
-      - 8093:8093
-      - 11210:11210
-    environment:
-    - CB_USER=pacman
-    - CB_BUCKET=hide_n_seek
+      - 127.0.0.1:8091-8093:8091-8093
+      - 127.0.0.1:11210:11210
 
   # the nodejs application backend server
   nodejs:
     container_name: hns_node
-    image: phusion/passenger-nodejs:0.9.19
+    build: ./data/docker/nodejs
+    image: hns_node:0.0.1
     restart: always
     links:
       - couchbase
+    ports:
+      - 127.0.0.1:80:80
+      - 127.0.0.1:3000:3000
