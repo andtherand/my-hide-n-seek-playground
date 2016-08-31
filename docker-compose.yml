@@ -4,7 +4,6 @@
 
 version: '2'
 services:
-
   # the persistence layer
   couchbase:
     container_name: hns_couchbase
@@ -17,9 +16,10 @@ services:
   # the nodejs application backend server
   nodejs:
     container_name: hns_node
-    build: ./data/docker/nodejs
-    image: hns_node:0.0.1
+    image: mychiara/hns_node:0.0.1
     restart: always
+    depends_on:
+      - couchbase
     links:
       - couchbase
     ports:

@@ -20,9 +20,9 @@ RUN git clone https://github.com/mychiara/hns_app /home/app/webapp
 # set npm registry for speed
 RUN npm config set registry https://registry.npmjs.org/
 # install gulp globally
-RUN npm i -g gulp
+RUN npm i -g gulp --silent
 # install dependendencies
-RUN cd /home/app/webapp && npm install --silent --unsafe-perm
+RUN cd /home/app/webapp && npm i --silent --unsafe-perm
 
 # Add runit script for app
 COPY scripts/run /etc/service/nodejs/run
