@@ -16,12 +16,12 @@ services:
   # the nodejs application backend server
   nodejs:
     container_name: hns_node
-    image: mychiara/hns_node:0.0.1
+    image: mychiara/hns_node
     restart: always
     depends_on:
       - couchbase
     links:
-      - couchbase
+      - 'couchbase:db'
     ports:
       - 127.0.0.1:80:80
       - 127.0.0.1:3000:3000
