@@ -7,21 +7,23 @@ services:
   # the persistence layer
   couchbase:
     container_name: hns_couchbase
-    image: mychiara/hns_couchbase:0.0.3
+    image: mychiara/hns_couchbase:0.0.4
     restart: always
     ports:
-      - 127.0.0.1:8091-8093:8091-8093
-      - 127.0.0.1:11210:11210
+      - "8091-8093:8091-8093"
+      - "11207:11207"
+      - "11210-11211:11210-11211"
+      - "18091-18092:18091-18092"
 
   # the nodejs application backend server
   nodejs:
     container_name: hns_node
-    image: mychiara/hns_node
+    build: ./data/docker/nodejs
+    image: mychiara/hns_node:0.0.3
     restart: always
     depends_on:
       - couchbase
-    links:
-      - 'couchbase:db'
     ports:
-      - 127.0.0.1:80:80
-      - 127.0.0.1:3000:3000
+      - "80:80"
+    environment:
+      - "APP_BRANCH=compose"
