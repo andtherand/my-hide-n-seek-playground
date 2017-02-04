@@ -20,7 +20,6 @@ The defaults username is ```desmond```. (I just recently finished watching LOST 
 
 The default password is ```secret_password``` (Must be changed).
 
-The default bucket is called ```sync_gateway``` .
 
 ## Bugs and notices
 
